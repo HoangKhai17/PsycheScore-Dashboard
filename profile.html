@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BBOTech Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/reponsive.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <img src="img/image.png" alt="BBOTech Logo" class="sidebar-logo" />
+        </div>
+
+        <div class="user-profile">
+          <img
+            src="https://i.pravatar.cc/100?u=cameron"
+            alt="User Avatar"
+            class="avatar"
+          />
+          <div class="user-details">
+            <span class="user-name">Cameron Williamson</span>
+            <span class="user-role">ADMIN</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="index.html" class="active"
+                ><i class="bx bx-home"></i> Home</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="bx bx-box"></i> Pools</a>
+            </li>
+            <li>
+              <a href="chat.html"><i class="bx bx-bot"></i> Points</a>
+            </li>
+
+            <li>
+              <a href="#"><i class="bx bx-wallet"></i> Wallet</a>
+            </li>
+            <li>
+              <a href="profile.html"><i class="bx bx-user"></i> Profile</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="main-content">
+        <header class="main-header">
+          <button class="menu-toggle" aria-label="Open menu">
+            <i class="bx bx-menu"></i>
+          </button>
+          <nav class="breadcrumb">
+            <ol>
+              <li><a href="#">Home</a></li>
+              <li aria-current="page">Profile</li>
+            </ol>
+          </nav>
+          <div class="header-actions">
+            <button class="btn btn-primary" id="connect-wallet-btn">
+              Connect Wallet
+            </button>
+            <button class="theme-toggle"><i class="bx bx-moon"></i></button>
+          </div>
+        </header>
+
+        <div class="profile-container">
+            <div class="profile-header-card card">
+                <div class="avatar-section">
+                    <img src="https://i.pravatar.cc/150?u=cameron" alt="User Avatar" class="profile-avatar">
+                    <div class="avatar-actions">
+                        <h3>Cameron Williamson</h3>
+                        <p>@cameronwilliamson</p>
+                        <button class="btn btn-secondary">Change Photo</button>
+                    </div>
+                </div>
+            </div>
+        
+            <form class="profile-details-form card">
+                <div class="card-header">
+                    <h4>Profile Information</h4>
+                    <p>Update your personal details.</p>
+                </div>
+                <div class="card-body">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" class="form-control" value="Cameron Williamson">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" value="cameron.w@example.com">
+                        </div>
+                        <div class="form-group form-group-full">
+                            <label for="walletAddress">Wallet Address</label>
+                            <div class="input-with-button">
+                                <input type="text" id="walletAddress" class="form-control" value="addr1q8ywffd5c28a253a86p5a8n2v6csmplw3x2dp0vs3f4q2wz5m4q3s3e4r5t6y7u8i9o0p" readonly>
+                                <button type="button" class="btn-icon" id="copy-wallet-btn" aria-label="Copy address"><i class='bx bx-copy'></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="points">Your Points</label>
+                            <input type="text" id="points" class="form-control" value="1,250" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+
+        <footer class="main-footer">
+          <p>Copyright by BBOTech.vn</p>
+        </footer>
+      </main>
+      <button class="fab">
+        <i class="bx bx-conversation"></i>
+      </button>
+    </div>
+    <div class="sidebar-overlay"></div>
+
+    <div class="popup-overlay" id="wallet-popup">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>Connect Wallet</h3>
+          <button class="close-popup" id="close-popup-btn">
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+        <div class="popup-body">
+          <p>Please select your wallet to connect to this dapp:</p>
+          <ul class="wallet-list">
+            <li>
+              <a href="#"
+                ><img src="/img/lace.png" alt="Lace" /><span>Lace</span
+                ><i class="bx bx-chevron-right"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="/img/yoroi.png" alt="Yoroi" /><span>Yoroi</span
+                ><i class="bx bx-chevron-right"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="/img/midnight.png" alt="Midnight" /><span
+                  >Midnight</span
+                ><i class="bx bx-chevron-right"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

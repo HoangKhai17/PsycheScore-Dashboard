@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BBOTech Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/reponsive.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <img src="img/image.png" alt="BBOTech Logo" class="sidebar-logo" />
+        </div>
+
+        <div class="user-profile">
+          <img
+            src="https://i.pravatar.cc/100?u=cameron"
+            alt="User Avatar"
+            class="avatar"
+          />
+          <div class="user-details">
+            <span class="user-name">Cameron Williamson</span>
+            <span class="user-role">ADMIN</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="index.html" class="active"
+                ><i class="bx bx-home"></i> Home</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="bx bx-box"></i> Pools</a>
+            </li>
+            <li>
+              <a href="chat.html"><i class="bx bx-bot"></i> Points</a>
+            </li>
+
+            <li>
+              <a href="#"><i class="bx bx-wallet"></i> Wallet</a>
+            </li>
+            <li>
+              <a href="profile.html"><i class="bx bx-user"></i> Profile</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="main-content">
+        <header class="main-header">
+          <nav class="breadcrumb">
+            <ol>
+              <li><a href="#">Home</a></li>
+              <li aria-current="page">Chat</li>
+            </ol>
+          </nav>
+          <div class="header-actions">
+            <button class="btn btn-primary" id="connect-wallet-btn">
+              Connect Wallet
+            </button>
+            <button class="theme-toggle"><i class="bx bx-moon"></i></button>
+          </div>
+        </header>
+
+
+        <div class="chat-container">
+          <div class="chat-history">
+            <div class="welcome-screen">
+              <h1>How can I help you?</h1>
+            </div>
+          </div>
+          <form class="chat-input-form" id="chat-form">
+            <textarea placeholder="Message BBOTech..." required></textarea>
+            <button type="submit" aria-label="Send message"><i class='bx bx-paper-plane'></i></button>
+          </form>
+        </div>
+
+        <footer class="main-footer">
+          <p>Copyright by BBOTech.vn</p>
+        </footer>
+      </main>
+      <button class="fab">
+        <i class="bx bx-conversation"></i>
+      </button>
+    </div>
+
+    <div class="popup-overlay" id="wallet-popup">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>Connect Wallet</h3>
+          <button class="close-popup" id="close-popup-btn">
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+        <div class="popup-body">
+          <p>Please select your wallet to connect to this dapp:</p>
+          <ul class="wallet-list">
+            <li>
+              <a href="#"
+                ><img src="/img/lace.png" alt="Lace" /><span>Lace</span
+                ><i class="bx bx-chevron-right"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="/img/yoroi.png" alt="Yoroi" /><span>Yoroi</span
+                ><i class="bx bx-chevron-right"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="/img/midnight.png" alt="Midnight" /><span
+                  >Midnight</span
+                ><i class="bx bx-chevron-right"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/chat.js"></script>
+  </body>
+</html>

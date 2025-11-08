@@ -1,0 +1,79 @@
+/* ----- Tablet View ----- */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 220px;
+    --padding-container: 20px;
+  }
+
+  .breadcrumb ol {
+    font-size: 18px;
+  }
+}
+
+/* ----- Mobile View ----- */
+@media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: 1fr; /* Single column */
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 100;
+    transform: translateX(-100%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-right: none;
+    /* transition is already on sidebar */
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-header {
+    gap: 16px;
+  }
+
+  .breadcrumb {
+    display: none; /* Hide for simplicity */
+  }
+
+  :root {
+    --padding-container: 16px;
+  }
+}
+
+/* =================================================================
+      PHẦN 9: RESPONSIVE
+      ================================================================= */
+
+.menu-toggle {
+  display: none; /* Hidden by default on desktop */
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.sidebar-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
