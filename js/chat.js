@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatContainer = document.getElementById('chat-container');
     const chatHistory = document.getElementById('chat-history');
 
+    // New DOM Elements for the updated flow
+    const roleVerificationPopup = document.getElementById('role-verification-popup');
+    const verifyRoleBtn = document.getElementById('verify-role-btn');
+    const analyzingOverlay = document.getElementById('analyzing-overlay');
+    const resultsPopup = document.getElementById('results-popup');
+
     // Survey Data
     const surveyData = [
         {
@@ -44,19 +50,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentQuestionIndex = 0;
     const userAnswers = [];
+    let userRoles = [];
 
     // Event Listeners
-    startSurveyBtn.addEventListener('click', startSurvey);
+    startSurveyBtn.addEventListener('click', showRoleVerification);
     cancelSurveyBtn.addEventListener('click', () => {
         surveyStartPopup.classList.remove('show');
     });
+    verifyRoleBtn.addEventListener('click', startSurvey);
     chatHistory.addEventListener('click', handleQuickReplyClick);
 
     // Functions
-    function startSurvey() {
+    function showRoleVerification() {
         surveyStartPopup.classList.remove('show');
+        roleVerificationPopup.classList.add('show');
+    }
+
+    function startSurvey() {
+        // Get selected roles
+        userRoles = [...document.querySelectorAll('input[name="role"]:checked')].map(cb => cb.value);
+        console.log("Selected roles:", userRoles);
+
+        roleVerificationPopup.classList.remove('show');
         chatContainer.style.display = 'flex';
-        addMessage("Xin chào bạn, vui lòng thực hiện chọn câu trả lời cho các câu hỏi sau để hoàn thành bài khảo sát.", 'bot');
+        addMessage("Xin chào bạn, hãy trả lời các câu hỏi khảo sát sau để chúng tôi hiểu rõ hơn về phong cách quản lý rủi ro của bạn.", 'bot');
         
         setTimeout(() => {
             displayQuestion();
@@ -64,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayQuestion() {
-        // First, remove any existing quick replies
         const existingReplies = chatHistory.querySelector('.quick-replies-container');
         if (existingReplies) {
             existingReplies.remove();
@@ -100,9 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedAnswer = e.target.textContent;
         userAnswers.push({ question: surveyData[currentQuestionIndex].question, answer: selectedAnswer });
 
-        // Remove the quick replies container
         e.target.closest('.quick-replies-container').remove();
-
         addMessage(selectedAnswer, 'user');
         
         currentQuestionIndex++;
@@ -115,6 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function finishSurvey() {
         addMessage("Cảm ơn bạn đã hoàn thành khảo sát. Hệ thống đang phân tích...", 'bot');
         console.log("Survey finished. User answers:", userAnswers);
+
+        // Start the analysis animation
+        analyzingOverlay.classList.add('show');
+
+        // Hide animation and show results after it finishes (12 seconds total)
+        setTimeout(() => {
+            analyzingOverlay.classList.remove('show');
+            resultsPopup.classList.add('show');
+        }, 12000); 
     }
 
     function addMessage(text, type) {

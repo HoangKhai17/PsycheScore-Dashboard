@@ -40,18 +40,17 @@
           <ul>
             <li>
               <a href="index.html" class="active"
-                ><i class="bx bx-home"></i> Home</a
+                ><i class="bx bx-home"></i> Home</a 
               >
             </li>
             <li>
-              <a href="#"><i class="bx bx-box"></i> Pools</a>
+              <a href="#"><i class="bx bx-trending-down"></i> Borrow</a>
             </li>
             <li>
-              <a href="chat.html"><i class="bx bx-bot"></i> Points</a>
+              <a href="#"><i class="bx bx-trending-up"></i> Lend / Supply</a>
             </li>
-
             <li>
-              <a href="#"><i class="bx bx-wallet"></i> Wallet</a>
+              <a href="chat.html"><i class="bx bx-bot"></i>Survey</a>
             </li>
             <li>
               <a href="profile.html"><i class="bx bx-user"></i> Profile</a>
@@ -76,7 +75,7 @@
         </header>
 
         <!-- main container -->
-        <div class="chat-container" id="chat-container" style="display: none;">
+        <div class="chat-container" id="chat-container" style="display: none">
           <div class="chat-history" id="chat-history">
             <!-- Messages and quick replies will be dynamically added here -->
           </div>
@@ -115,7 +114,91 @@
       </div>
     </div>
 
-    
+    <!-- Role Verification Popup -->
+    <div class="popup-overlay" id="role-verification-popup">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>Xác minh vai trò cộng đồng</h3>
+        </div>
+        <div class="popup-body">
+          <p>Chọn một hoặc nhiều vai trò bạn tham gia trong cộng đồng.</p>
+          <div class="role-checkbox-list">
+            <label class="role-checkbox-item">
+              <input type="checkbox" name="role" value="spo" />
+              Stake Pool Operator (SPO)
+            </label>
+            <label class="role-checkbox-item">
+              <input type="checkbox" name="role" value="drep" />
+              Drep
+            </label>
+            <label class="role-checkbox-item">
+              <input type="checkbox" name="role" value="cc" />
+              Community Contributor (CC)
+            </label>
+            <label class="role-checkbox-item">
+              <input type="checkbox" name="role" value="developer" />
+              Developer
+            </label>
+            <label class="role-checkbox-item">
+              <input type="checkbox" name="role" value="holder" />
+              Holder
+            </label>
+            <label class="role-checkbox-item">
+              <input type="checkbox" name="role" value="other" />
+              Khác
+            </label>
+          </div>
+          <div class="popup-actions">
+            <button class="btn btn-primary" id="verify-role-btn">
+              Xác minh
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analyzing Animation Overlay -->
+    <div class="analyzing-overlay" id="analyzing-overlay">
+      <div class="analyzing-content">
+        <div class="spinner"></div>
+        <p class="analyzing-text" id="analyzing-text-1">
+          Đang tổng hợp dữ liệu...
+        </p>
+        <p class="analyzing-text" id="analyzing-text-2">
+          AI đang phân tích...
+        </p>
+        <p class="analyzing-text" id="analyzing-text-3">
+          Tạo bằng chứng Zero knowledge...
+        </p>
+      </div>
+    </div>
+
+    <!-- Survey Results Popup -->
+    <div class="popup-overlay" id="results-popup">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>Kết quả khảo sát</h3>
+        </div>
+        <div class="popup-body results-body">
+          <div class="result-item">
+            <span>Điểm số tính dụng của bạn</span>
+            <strong class="score">850</strong>
+          </div>
+          <div class="result-item">
+            <span>Hạn mức vay tối đa</span>
+            <strong>$1500 USDT</strong>
+          </div>
+          <div class="result-item">
+            <span>Lãi suất ước tính</span>
+            <strong>8.5%</strong>
+          </div>
+          <div class="popup-actions">
+            <a href="profile.html" class="btn btn-secondary">Xem hồ sơ</a>
+            <a href="borrow.html" class="btn btn-primary">Vay ngay</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="popup-overlay" id="wallet-popup">
       <div class="popup-content">

@@ -619,6 +619,60 @@ body.dark-theme .btn-secondary:hover {
 }
 
 /* =================================================================
+   PHẦN 12: DASHBOARD GRID
+   ================================================================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.main-chart-container .card-body {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    background-color: var(--bg-main);
+    border-radius: var(--border-radius-md);
+    border: 2px dashed var(--accent-border);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.stat-card .card-header h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.stat-card .card-body {
+    padding-top: 0;
+}
+
+.stat-card .card-body p {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+
+/* =================================================================
    PHẦN 10: CHAT INTERFACE
    ================================================================= */
 
@@ -706,6 +760,316 @@ body.dark-theme .btn-secondary:hover {
     background-color: var(--accent-solid-green);
     color: var(--text-white);
 }
+
+/* =================================================================
+   PHẦN 13: ROLE VERIFICATION & RESULTS
+   ================================================================= */
+
+.role-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.role-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.role-checkbox-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent-solid-green);
+}
+
+.analyzing-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.analyzing-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.analyzing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: var(--text-white);
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--text-white);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.analyzing-text {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0;
+  animation: fadeInOut 4s linear forwards;
+}
+
+#analyzing-text-2 {
+  animation-delay: 4s;
+}
+#analyzing-text-3 {
+  animation-delay: 8s;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  25%, 75% { opacity: 1; }
+}
+
+.results-body {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--accent-border);
+}
+.result-item:last-of-type {
+    border-bottom: none;
+}
+
+.result-item span {
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.result-item strong {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.result-item .score {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-solid-green);
+}
+
+/* =================================================================
+   PHẦN 14: PROFILE PAGE - OVERVIEW & HISTORY
+   ================================================================= */
+
+.stats-overview-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.overview-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+.stat-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-item span {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.stat-item strong {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.donut-chart {
+    max-width: 75%;
+}
+
+.chart-bg {
+    fill: none;
+    stroke: var(--accent-border);
+    stroke-width: 3;
+}
+
+.chart-segment {
+    fill: none;
+    stroke: var(--accent-solid-green);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
+
+.supply-overview .chart-segment {
+    stroke: #2563eb; /* A blue color for the other chart */
+}
+
+
+.chart-label {
+    font-size: 0.6em;
+    text-anchor: middle;
+    fill: var(--text-primary);
+    font-weight: 600;
+}
+
+.chart-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    font-size: 12px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-item span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.legend-item.used span, .legend-item.usdm span {
+    background-color: var(--accent-solid-green);
+}
+.supply-overview .legend-item.usdm span {
+     background-color: #2563eb;
+}
+
+.legend-item.remaining span, .legend-item.iusd span {
+    background-color: var(--accent-border);
+}
+
+
+/* Transaction History */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.filter-group {
+    display: flex;
+    gap: 12px;
+}
+
+.filter-select {
+    background-color: var(--bg-main);
+    border: 1px solid var(--accent-border);
+    border-radius: var(--border-radius-sm);
+    padding: 6px 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.history-table th, .history-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--accent-border);
+}
+
+.history-table thead th {
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.history-table tbody tr:hover {
+    background-color: var(--bg-main);
+}
+
+.type-swap, .type-borrow, .type-supply, .type-repay {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.type-swap { background-color: #eff6ff; color: #3b82f6; }
+.type-borrow { background-color: #fef2f2; color: #ef4444; }
+.type-supply { background-color: #f0fdf4; color: #22c55e; }
+.type-repay { background-color: #fffbeb; color: #f59e0b; }
+
+.status-completed {
+    color: var(--text-green);
+    font-weight: 500;
+}
+
+.tx-link {
+    font-size: 20px;
+    color: var(--text-secondary);
+}
+.tx-link:hover {
+    color: var(--text-primary);
+}
+
+
 
 
   
