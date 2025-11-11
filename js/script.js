@@ -2,6 +2,23 @@ const connectWalletBtn = document.getElementById("connect-wallet-btn");
 const walletPopup = document.getElementById("wallet-popup");
 const closePopupBtn = document.getElementById("close-popup-btn");
 
+// New popup elements
+const borrowPopup = document.getElementById("borrow-popup");
+const lendPopup = document.getElementById("lend-popup");
+
+// Buttons to open popups from the market table
+const openBorrowPopupBtn = document.querySelector(".pool-actions .btn-primary"); // Assuming 'Borrow' is primary
+const openLendPopupBtn = document.querySelector(".pool-actions .btn-secondary"); // Assuming 'Lend' is secondary
+
+// Close buttons inside the popups
+const closeBorrowPopupBtn = borrowPopup ? borrowPopup.querySelector(".close-popup") : null;
+const closeLendPopupBtn = lendPopup ? lendPopup.querySelector(".close-popup") : null;
+
+// Toggle buttons inside the popups
+const borrowToggleBtnInLend = lendPopup ? lendPopup.querySelector(".toggle-buttons .btn-secondary") : null;
+const lendToggleBtnInBorrow = borrowPopup ? borrowPopup.querySelector(".toggle-buttons .btn-secondary") : null;
+
+
 if (connectWalletBtn && walletPopup && closePopupBtn) {
 	connectWalletBtn.addEventListener("click", () => {
 		walletPopup.classList.add("show");
@@ -17,6 +34,64 @@ if (connectWalletBtn && walletPopup && closePopupBtn) {
 		}
 	});
 }
+
+// Logic for Borrow/Lend Popups
+if (openBorrowPopupBtn && borrowPopup) {
+    openBorrowPopupBtn.addEventListener("click", () => {
+        borrowPopup.classList.add("show");
+    });
+}
+
+if (openLendPopupBtn && lendPopup) {
+    openLendPopupBtn.addEventListener("click", () => {
+        lendPopup.classList.add("show");
+    });
+}
+
+if (closeBorrowPopupBtn && borrowPopup) {
+    closeBorrowPopupBtn.addEventListener("click", () => {
+        borrowPopup.classList.remove("show");
+    });
+}
+
+if (closeLendPopupBtn && lendPopup) {
+    closeLendPopupBtn.addEventListener("click", () => {
+        lendPopup.classList.remove("show");
+    });
+}
+
+// Close popups when clicking outside the content
+if (borrowPopup) {
+    borrowPopup.addEventListener("click", (e) => {
+        if (e.target === borrowPopup) {
+            borrowPopup.classList.remove("show");
+        }
+    });
+}
+
+if (lendPopup) {
+    lendPopup.addEventListener("click", (e) => {
+        if (e.target === lendPopup) {
+            lendPopup.classList.remove("show");
+        }
+    });
+}
+
+// Toggle between Borrow and Lend popups
+if (lendToggleBtnInBorrow && borrowPopup && lendPopup) {
+    lendToggleBtnInBorrow.addEventListener("click", () => {
+        borrowPopup.classList.remove("show");
+        lendPopup.classList.add("show");
+    });
+}
+
+if (borrowToggleBtnInLend && borrowPopup && lendPopup) {
+    borrowToggleBtnInLend.addEventListener("click", () => {
+        lendPopup.classList.remove("show");
+        borrowPopup.classList.add("show");
+    });
+}
+
 
 // Theme Toggle
 const themeToggle = document.querySelector('.theme-toggle');
