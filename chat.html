@@ -75,18 +75,13 @@
           </div>
         </header>
 
-
-        <div class="chat-container">
-          <div class="chat-history">
-            <div class="welcome-screen">
-              <h1>How can I help you?</h1>
-            </div>
+        <!-- main container -->
+        <div class="chat-container" id="chat-container" style="display: none;">
+          <div class="chat-history" id="chat-history">
+            <!-- Messages and quick replies will be dynamically added here -->
           </div>
-          <form class="chat-input-form" id="chat-form">
-            <textarea placeholder="Message BBOTech..." required></textarea>
-            <button type="submit" aria-label="Send message"><i class='bx bx-paper-plane'></i></button>
-          </form>
         </div>
+        <!-- end main -->
 
         <footer class="main-footer">
           <p>Copyright by BBOTech.vn</p>
@@ -96,6 +91,31 @@
         <i class="bx bx-conversation"></i>
       </button>
     </div>
+
+    <!-- Survey Start Popup -->
+    <div class="popup-overlay show" id="survey-start-popup">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>Bắt đầu thực hiện khảo sát</h3>
+        </div>
+        <div class="popup-body">
+          <p>
+            Vui lòng hoàn thành bài khảo sát để chúng tôi có thể hiểu rõ hơn về
+            bạn.
+          </p>
+          <div class="popup-actions">
+            <button class="btn btn-primary" id="start-survey-btn">
+              Bắt đầu
+            </button>
+            <button class="btn btn-secondary" id="cancel-survey-btn">
+              Hủy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
 
     <div class="popup-overlay" id="wallet-popup">
       <div class="popup-content">
