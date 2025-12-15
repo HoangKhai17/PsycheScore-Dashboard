@@ -1,176 +1,108 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BBOTech Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>PsycheScore</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/reponsive.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
   </head>
+
   <body>
-    <div class="dashboard-container">
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <img src="img/logo2.png" alt="BBOTech Logo" class="sidebar-logo" />
-        </div>
-
-        <div class="user-profile">
-          <img
-            src="https://i.pravatar.cc/100?u=cameron"
-            alt="User Avatar"
-            class="avatar"
-          />
-          <div class="user-details">
-            <span class="user-name">Cameron Williamson</span>
-            <span class="user-role">ADMIN</span>
-          </div>
-        </div>
-
-        <nav class="sidebar-nav">
-          <ul>
-            <li>
-              <a href="index.html" class="active"
-                ><i class="bx bx-home"></i> Home</a
-              >
-            </li>
-            <li>
-              <a href="deposit.html"><i class="bx bx-beer"></i>Lend</a>
-            </li>
-            <li>
-              <a href="swap.html"><i class="bx bx-code"></i>Swap</a>
-            </li>
-            <li>
-              <a href="chat.html"><i class="bx bx-bot"></i>Survey</a>
-            </li>
-            <li>
-              <a href="profile.html"><i class="bx bx-user"></i> Profile</a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-      <main class="main-content">
-        <header class="main-header">
-          <button class="menu-toggle" aria-label="Open menu">
-            <i class="bx bx-menu"></i>
-          </button>
-          <nav class="breadcrumb">
-            <ol>
-              <li><a href="#">Home</a></li>
-              <li aria-current="page">Dashboard</li>
-            </ol>
-          </nav>
-          <div class="header-actions">
-            <button class="btn btn-primary" id="connect-wallet-btn">
-              Connect Wallet
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">
+            <img src="img/psylogo_white.png" alt="PsycheScore Logo" />
+          </a>
+          <div class="nav-right">
+          
+            <button id="theme-toggle" class="theme-toggle-btn">
+              <i class="fa-solid fa-moon"></i> 
             </button>
-            <button class="theme-toggle"><i class="bx bx-moon"></i></button>
+          
+            <a href="#" class="btn btn-secondary wallet-address-btn">
+              <span id="walletAddressDisplay">addr12...fsfsd</span> 
+              <span class="hidden">addr1qyvtj4t5j5e3c7g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5</span>
+              <i class="fa-regular fa-copy copy-icon" id="copyWalletAddress"></i>
+            </a>
+            <a href="#" class="btn btn-secondary">
+              <i class="fa-solid fa-file-lines"></i>
+              Whitepaper
+            </a>
+            <a href="#" class="btn btn-primary">
+              <i class="fa-solid fa-wallet"></i>
+              Disconnect
+            </a>
           </div>
-        </header>
-
-        <!-- Main container -->
-        <div class="dashboard-grid">
-          <div class="main-chart-container card">
-            <div class="card-header">
-              <h4>Total Value Locked</h4>
-              <p>Monitor the overall value locked in the protocol.</p>
-            </div>
-            <div class="card-body">
-              <!-- Placeholder for the main chart -->
-              <div class="chart-placeholder">Chart will be here</div>
-            </div>
-          </div>
-          <div class="stats-grid">
-            <div class="stat-card card">
-              <div class="card-header">
-                <h5>Psycher Score</h5>
-              </div>
-              <div class="card-body">
-                <p>85/100</p>
-              </div>
-            </div>
-            <div class="stat-card card">
-              <div class="card-header">
-                <h5>ADA Staked</h5>
-              </div>
-              <div class="card-body">
-                <p>1,234 ADA</p>
-              </div>
-            </div>
-            <div class="stat-card card">
-              <div class="card-header">
-                <h5>Rewards Earned</h5>
-              </div>
-              <div class="card-body">
-                <p>56.78 PSY</p>
-              </div>
-            </div>
-            <div class="stat-card card">
-              <div class="card-header">
-                <h5>Epoch</h5>
-              </div>
-              <div class="card-body">
-                <p>452</p>
-              </div>
-            </div>
+         
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <main class="hero-section">
+        <div class="hero-content">
+          <h1>Experience <span class="highlight">PsycheCredit</span> – The decentralized protocol</h1>
+          <p>Unlock powerful AI tools for your business — deploy smart chatbots, automate workflows, analyze data, and more with zero coding. Scalable. Secure. Lightning fast.</p>
+          <div class="cta-buttons">
+            <a href="#" class="btn btn-primary" id="connectWalletBtn"><i class="fa-solid fa-wallet"></i> Connect wallet </a>
+            <a href="#" class="btn btn-secondary">Watch Demo</a>
           </div>
         </div>
-        <!-- end -->
 
-        <footer class="main-footer">
-          <p>Copyright by BBOTech.vn</p>
-        </footer>
+
+        
       </main>
-      <button class="fab">
-        <i class="bx bx-conversation"></i>
-      </button>
-    </div>
-    <div class="sidebar-overlay"></div>
 
-    <div class="popup-overlay" id="wallet-popup">
-      <div class="popup-content">
+      <footer>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025. PsycheScore</p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="wallet-popup-overlay" id="walletPopup">
+      <div class="wallet-popup">
         <div class="popup-header">
-          <h3>Connect Wallet</h3>
-          <button class="close-popup" id="close-popup-btn">
-            <i class="bx bx-x"></i>
-          </button>
+          <h2>Connect Wallet</h2>
+          <button class="close-btn" id="closePopupBtn">&times;</button>
         </div>
-        <div class="popup-body">
-          <p>Please select your wallet to connect to this dapp:</p>
-          <ul class="wallet-list">
-            <li>
-              <a href="#"
-                ><img src="/img/lace.png" alt="Lace" /><span>Lace</span
-                ><i class="bx bx-chevron-right"></i
-              ></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="/img/yoroi.png" alt="Yoroi" /><span>Yoroi</span
-                ><i class="bx bx-chevron-right"></i
-              ></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="/img/midnight.png" alt="Midnight" /><span
-                  >Midnight</span
-                ><i class="bx bx-chevron-right"></i
-              ></a>
-            </li>
-          </ul>
-        </div>
+        <p class="popup-subheading">Choose how you want to connect</p>
+        <ul class="wallet-list">
+          <li class="wallet-item">
+            <a href="#">
+              <img src="img/lace.png" alt="Metamask">
+              Lace wallet
+            </a>
+          </li>
+          <li class="wallet-item">
+            <a href="#">
+              <img src="img/yoroi.png" alt="Yoroi Wallet">
+              Yoroi Wallet
+            </a>
+          </li>
+        
+          <li class="wallet-item">
+            <a href="#">
+              <img src="img/midnight.png" alt="Midnight">
+              Midnight
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-
+    
     <script src="js/script.js"></script>
   </body>
 </html>
+

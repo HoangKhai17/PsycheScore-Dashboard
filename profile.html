@@ -1,343 +1,177 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BBOTech Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>PsycheScore</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/reponsive.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
   </head>
+
   <body>
-    <div class="dashboard-container">
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <img src="img/image.png" alt="BBOTech Logo" class="sidebar-logo" />
-        </div>
-
-        <div class="user-profile">
-          <img
-            src="https://i.pravatar.cc/100?u=cameron"
-            alt="User Avatar"
-            class="avatar"
-          />
-          <div class="user-details">
-            <span class="user-name">Cameron Williamson</span>
-            <span class="user-role">ADMIN</span>
-          </div>
-        </div>
-
-        <nav class="sidebar-nav">
-          <ul>
-            <li>
-              <a href="index.html" class="active"
-                ><i class="bx bx-home"></i> Home</a
-              >
-            </li>
-            <li>
-              <a href="#"><i class="bx bx-trending-down"></i> Borrow</a>
-            </li>
-            <li>
-              <a href="#"><i class="bx bx-trending-up"></i> Lend / Supply</a>
-            </li>
-            <li>
-              <a href="chat.html"><i class="bx bx-bot"></i>Survey</a>
-            </li>
-            <li>
-              <a href="profile.html"><i class="bx bx-user"></i> Profile</a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-      <main class="main-content">
-        <header class="main-header">
-          <button class="menu-toggle" aria-label="Open menu">
-            <i class="bx bx-menu"></i>
-          </button>
-          <nav class="breadcrumb">
-            <ol>
-              <li><a href="#">Home</a></li>
-              <li aria-current="page">Profile</li>
-            </ol>
-          </nav>
-          <div class="header-actions">
-            <button class="btn btn-primary" id="connect-wallet-btn">
-              Connect Wallet
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">
+            <img src="img/psylogo_white.png" alt="PsycheScore Logo" />
+          </a>
+          <div class="nav-right">
+          
+            <button id="theme-toggle" class="theme-toggle-btn">
+              <i class="fa-solid fa-moon"></i> 
             </button>
-            <button class="theme-toggle"><i class="bx bx-moon"></i></button>
+          
+            <a href="#" class="btn btn-secondary wallet-address-btn">
+              <span id="walletAddressDisplay">addr12...fsfsd</span> 
+              <span class="hidden">addr1qyvtj4t5j5e3c7g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5</span>
+              <i class="fa-regular fa-copy copy-icon" id="copyWalletAddress"></i>
+            </a>
+            <a href="#" class="btn btn-secondary">
+              <i class="fa-solid fa-file-lines"></i>
+              Whitepaper
+            </a>
+            <a href="#" class="btn btn-primary">
+              <i class="fa-solid fa-wallet"></i>
+              Disconnect
+            </a>
           </div>
-        </header>
-
-        <div class="profile-container">
-            <div class="profile-header-card card card-header">
-                <div class="avatar-section">
-                    <img src="https://i.pravatar.cc/150?u=cameron" alt="User Avatar" class="profile-avatar">
-                    <div class="avatar-actions">
-                        <h3>Cameron Williamson</h3>
-                        <p>@cameronwilliamson</p>
-                        <button class="btn btn-secondary">Change Photo</button>
-                    </div>
-                </div>
+         
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <main class="hero-section">
+        <section class="profile-section">
+          <div class="profile-card">
+            <div class="profile-image">
+              <img src="img/yoroi.png" alt="Profile Picture" />
             </div>
+            <div class="profile-details">
+              <div class="detail-line"></div>
+              <div class="detail-line"></div>
+              <div class="detail-line"></div>
+            </div>
+          </div>
+          <div class="profile-content">
+            <div class="profile-stats">
+                <!-- Ranh điểm -->
+              <div class="stat-box">
+
+              </div>
+
+              <!--  -->
+              <div class="stat-box">
+
+              </div>
+
+              <!--  -->
+              <div class="stat-box">
+
+              </div>
+            </div>
+            <div class="profile-description">
+
+            </div>
+            <div class="profile-actions">
+                <table class="activity-table">
+                    <thead>
+                      <tr>
+                        <th>STT</th>
+                        <th>Wallet Address</th>
+                        <th>Score</th>
+                        <th>Status</th>
+                        <th>Update At</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>addr1qy...vytj4</td>
+                        <td>850</td>
+                        <td><span class="status-completed">Completed</span></td>
+                        <td>2025-12-14</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>addr1qy...vytj4</td>
+                        <td>-50</td>
+                        <td><span class="status-pending">Pending</span></td>
+                        <td>2025-12-13</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>addr1qy...vytj4</td>
+                        <td>300</td>
+                        <td><span class="status-completed">Completed</span></td>
+                        <td>2025-12-12</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>addr1qy...vytj4</td>
+                        <td>-20</td>
+                        <td><span class="status-failed">Failed</span></td>
+                        <td>2025-12-11</td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+        </section>
+
+
         
-            <form class="profile-details-form card">
-                <div class="card-header">
-                    <h4>Profile Information</h4>
-                    <p>Update your personal details.</p>
-                </div>
-                <div class="card-body">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="fullName">Wallet Trust</label>
-                            <input type="text" id="fullName" class="form-control" value="8/10">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Psychology</label>
-                            <input type="text" id="email" class="form-control" value="9/10">
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Community reputation</label>
-                          <input type="text" id="email" class="form-control" value="7/10">
-                      </div>
-                      <div class="form-group">
-                        <label for="points">Total Point</label>
-                        <input type="text" id="points" class="form-control" value="1,250" readonly readonly>
-                    </div>
-                        <div class="form-group form-group-full">
-                            <label for="walletAddress">Wallet Address</label>
-                            <div class="input-with-button">
-                                <input type="text" id="walletAddress" class="form-control" value="addr1q8ywffd5c28a253a86p5a8n2v6csmplw3x2dp0vs3f4q2wz5m4q3s3e4r5t6y7u8i9o0p" readonly>
-                                <button type="button" class="btn-icon" id="copy-wallet-btn" aria-label="Copy address"><i class='bx bx-copy'></i></button>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Re-score</button>
-                </div>
-            </form>
-
-            <!-- Stats Overview -->
-            <div class="stats-overview-container">
-                <!-- Loan Overview -->
-                <div class="card loan-overview">
-                    <div class="card-header">
-                        <h4>Tổng quan khoản vay</h4>
-                    </div>
-                    <div class="card-body overview-body">
-                        <div class="stat-details">
-                            <div class="stat-item">
-                                <span>Tổng hạn mức</span>
-                                <strong>$1,500.00</strong>
-                            </div>
-                            <div class="stat-item">
-                                <span>Tổng nợ</span>
-                                <strong>$600.00</strong>
-                            </div>
-                            <div class="stat-item">
-                                <span>Lãi suất</span>
-                                <strong>8.5%</strong>
-                            </div>
-                        </div>
-                        <div class="chart-container">
-                            <svg viewBox="0 0 36 36" class="donut-chart">
-                                <path class="chart-bg"
-                                    d="M18 2.0845
-                                      a 15.9155 15.9155 0 0 1 0 31.831
-                                      a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <path class="chart-segment" stroke-dasharray="40, 60"
-                                    d="M18 2.0845
-                                      a 15.9155 15.9155 0 0 1 0 31.831
-                                      a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <text x="18" y="20" class="chart-label">40%</text>
-                            </svg>
-                            <div class="chart-legend">
-                                <div class="legend-item used"><span></span>Đã sử dụng</div>
-                                <div class="legend-item remaining"><span></span>Còn lại</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Supply Overview -->
-                <div class="card supply-overview">
-                    <div class="card-header">
-                        <h4>Tổng quan cung cấp</h4>
-                    </div>
-                    <div class="card-body overview-body">
-                        <div class="stat-details">
-                            <div class="stat-item">
-                                <span>Tổng cung cấp</span>
-                                <strong>$5,000.00</strong>
-                            </div>
-                            <div class="stat-item">
-                                <span>Lãi đã kiếm</span>
-                                <strong>$125.50</strong>
-                            </div>
-                            <div class="stat-item">
-                                <span>APY</span>
-                                <strong>5.2%</strong>
-                            </div>
-                        </div>
-                        <div class="chart-container">
-                            <svg viewBox="0 0 36 36" class="donut-chart">
-                                <path class="chart-bg"
-                                    d="M18 2.0845
-                                      a 15.9155 15.9155 0 0 1 0 31.831
-                                      a 15.9155 15.9155 0 O 1 0 -31.831" />
-                                <path class="chart-segment" stroke-dasharray="60, 40"
-                                    d="M18 2.0845
-                                      a 15.9155 15.9155 0 0 1 0 31.831
-                                      a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <text x="18" y="20" class="chart-label">USDM</text>
-                            </svg>
-                             <div class="chart-legend">
-                                <div class="legend-item usdm"><span></span>60% USDM</div>
-                                <div class="legend-item iusd"><span></span>40% iUSD</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Transaction History -->
-            <div class="card transaction-history">
-                <div class="card-header history-header">
-                    <h4>Lịch sử giao dịch</h4>
-                    <div class="filter-group">
-                        <select class="filter-select">
-                            <option>Type</option>
-                            <option value="">Deposit</option>
-                            <option value="">Borrow</option>
-                        </select>
-                        <select class="filter-select">
-                            <option>Asset</option>
-                        </select>
-                        <select class="filter-select">
-                            <option>Status</option>
-                            <option value="">Success</option>
-                            <option value="">Cancelled</option>
-                            <option value="">Pending</option>
-                            <option value="">Limit</option>
-                            <option value="">Stop loss</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="card-body" style="padding: 0;">
-                    <table class="history-table">
-                        <thead>
-                            <tr>
-                                <th>Time</th>
-                                <th>Type</th>
-                                <th>Pair</th>
-                                <th>In</th>
-                                <th>Out</th>
-                                <th>Price</th>
-                                <th>Status</th>
-                                <th>Tx</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1h ago</td>
-                                <td><span class="type-swap">Swap</span></td>
-                                <td>iUSD/USDM</td>
-                                <td>100.5 iUSD</td>
-                                <td>100.0 USDM</td>
-                                <td>$1.005</td>
-                                <td><span class="status-completed">Completed</span></td>
-                                <td><a href="#" class="tx-link"><i class='bx bx-link-external'></i></a></td>
-                            </tr>
-                             <tr>
-                                <td>3h ago</td>
-                                <td><span class="type-borrow">Borrow</span></td>
-                                <td>USDM</td>
-                                <td>-</td>
-                                <td>200.0 USDM</td>
-                                <td>-</td>
-                                <td><span class="status-completed">Completed</span></td>
-                                <td><a href="#" class="tx-link"><i class='bx bx-link-external'></i></a></td>
-                            </tr>
-                             <tr>
-                                <td>1d ago</td>
-                                <td><span class="type-supply">Supply</span></td>
-                                <td>iUSD</td>
-                                <td>1,000 iUSD</td>
-                                <td>-</td>
-                                <td>-</td>
-                               <td><span class="status-completed">Completed</span></td>
-                                <td><a href="#" class="tx-link"><i class='bx bx-link-external'></i></a></td>
-                            </tr>
-                             <tr>
-                                <td>2d ago</td>
-                                <td><span class="type-repay">Repay</span></td>
-                                <td>USDM</td>
-                                <td>50.0 USDM</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td><span class="status-completed">Completed</span></td>
-                                <td><a href="#" class="tx-link"><i class='bx bx-link-external'></i></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <footer class="main-footer">
-          <p>Copyright by BBOTech.vn</p>
-        </footer>
       </main>
-      <button class="fab">
-        <i class="bx bx-conversation"></i>
-      </button>
-    </div>
-    <div class="sidebar-overlay"></div>
 
-    <div class="popup-overlay" id="wallet-popup">
-      <div class="popup-content">
+      <footer>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025. PsycheScore</p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="wallet-popup-overlay" id="walletPopup">
+      <div class="wallet-popup">
         <div class="popup-header">
-          <h3>Connect Wallet</h3>
-          <button class="close-popup" id="close-popup-btn">
-            <i class="bx bx-x"></i>
-          </button>
+          <h2>Connect Wallet</h2>
+          <button class="close-btn" id="closePopupBtn">&times;</button>
         </div>
-        <div class="popup-body">
-          <p>Please select your wallet to connect to this dapp:</p>
-          <ul class="wallet-list">
-            <li>
-              <a href="#"
-                ><img src="/img/lace.png" alt="Lace" /><span>Lace</span
-                ><i class="bx bx-chevron-right"></i
-              ></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="/img/yoroi.png" alt="Yoroi" /><span>Yoroi</span
-                ><i class="bx bx-chevron-right"></i
-              ></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="/img/midnight.png" alt="Midnight" /><span
-                  >Midnight</span
-                ><i class="bx bx-chevron-right"></i
-              ></a>
-            </li>
-          </ul>
-        </div>
+        <p class="popup-subheading">Choose how you want to connect</p>
+        <ul class="wallet-list">
+          <li class="wallet-item">
+            <a href="#">
+              <img src="img/lace.png" alt="Metamask">
+              Lace wallet
+            </a>
+          </li>
+          <li class="wallet-item">
+            <a href="#">
+              <img src="img/yoroi.png" alt="Yoroi Wallet">
+              Yoroi Wallet
+            </a>
+          </li>
+        
+          <li class="wallet-item">
+            <a href="#">
+              <img src="img/midnight.png" alt="Midnight">
+              Midnight
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-
+    
     <script src="js/script.js"></script>
   </body>
 </html>
+

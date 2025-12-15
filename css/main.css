@@ -1,1526 +1,629 @@
-/* =================================================================
-   PHẦN 1: RESET CSS
-   ================================================================= */
-
-   *,
-   *::before,
-   *::after {
-       box-sizing: border-box;
-       margin: 0;
-       padding: 0;
-   }
-   
-   html, body {
-       height: 100%;
-   }
-   
-   body {
-       font-family: 'Fira Code', monospace;
-       line-height: 1.5;
-       -webkit-font-smoothing: antialiased;
-       background-color: var(--bg-main);
-       color: var(--text-primary);
-       transition: background-color .3s ease, color .3s ease;
-   }
-   
-   img, picture, video, canvas, svg {
-       display: block;
-       max-width: 100%;
-   }
-   
-   input, button, textarea, select {
-       font: inherit;
-   }
-   
-   a {
-       text-decoration: none;
-       color: inherit;
-   }
-   
-   ul {
-       list-style: none;
-   }
-   
-   /* =================================================================
-      PHẦN 2: CSS VARIABLES
-      ================================================================= */
-   
-   :root {
-       /* ----- Colors ----- */
-       --bg-main: #F9FAFB; 
-       --bg-sidebar: #FFFFFF;
-       --bg-content: #FFFFFF;
-       
-       /* Card Backgrounds */
-       --bg-card-btc: #FFF8ED;
-       --bg-card-usdt: #F0FFF9;
-       --bg-card-ada: #F0F6FF;
-       --bg-card-bnb: #FEFDF0;
-   
-       /* Text */
-       --text-primary: #1F2937; 
-       --text-secondary: #6B7280; 
-       --text-white: #FFFFFF;
-       --text-green: #00852c;
-       --text-red: #EF4444;
-       
-       /* --- PHẦN ACCENT ĐÃ SỬA ---
-         1. Đã thêm gradient
-         2. Đã thêm lại màu solid (đồng nhất) để dùng cho border
-       */
-       --accent-gradient: linear-gradient(150deg, #00822c 0%, #b1d94e 100%);
-       --accent-solid-green: #00852c;
-       --accent-solid-green-dark: #004918;
-       --accent-border: #E5E7EB; /* Đường viền */
-   
-   
-       /* ----- Sizing & Spacing ----- */
-       --sidebar-width: 260px;
-       --header-height: 80px;
-       --border-radius-sm: 20px;
-       --border-radius-md: 25px;
-       --border-radius-lg: 30px;
-   
-       --padding-container: 24px;
-       --padding-card: 20px;
+/*
+Theme: Psychoscore - BBOTech
+Author: NguyenHoangKhai
+Version: 1.0.2
+*/
 
 
-       /* ----- Font Size ----- */
-       --font-size-24: 24px;
-       --font-size-22: 22px;
-       --font-size-20: 20px;
-       --font-size-18: 18px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-       /* ----- Font Weight ----- */
-       --font-weight-600: 600;
-       --font-weight-500: 500;
-       --font-weight-400: 400;
-       --font-weight-300: 300;
-       --font-weight-200: 200;
-       --font-weight-100: 100;
-   }
-   
-   body.dark-theme {
-       --bg-main: #111827;
-       --bg-sidebar: #1F2937;
-       --bg-content: #1F2937;
-       
-       --bg-card-btc: #2c2a2e;
-       --bg-card-usdt: #2a2f2e;
-       --bg-card-ada: #2a2d3f;
-       --bg-card-bnb: #2d2d2e;
-   
-       --text-primary: #F9FAFB;
-       --text-secondary: #9CA3AF;
-       
-       --accent-border: #374151;
-   }
-   
-   /* =================================================================
-      PHẦN 3: MAIN STYLES
-      ================================================================= */
-   
-   /* ----- 1. Layout chính ----- */
-   .dashboard-container {
-       display: grid;
-       grid-template-columns: var(--sidebar-width) 1fr;
-       height: 100vh;
-   }
-   
-   .sidebar {
-       background-color: var(--bg-sidebar);
-       border-right: 1px solid var(--accent-border);
-       padding: var(--padding-container);
-       display: flex;
-       flex-direction: column;
-       overflow-y: auto;
-       transition: background-color .3s ease, border-right .3s ease;
-   }
-   
-   .main-content {
-       background-color: var(--bg-main);
-       padding: var(--padding-container);
-       overflow-y: auto;
-       display: flex;
-       flex-direction: column;
-   }
-   
-   /* ----- 2. Sidebar ----- */
-   .sidebar-header {
-       margin-bottom: 24px;
-   }
-   .sidebar-logo {
-       height: 40px;
-       width: auto;
-   }
-   
-   .user-profile {
-       display: flex;
-       align-items: center;
-       gap: 12px;
-       margin-bottom: 24px;
-   }
-   .avatar {
-       width: 40px;
-       height: 40px;
-       border-radius: 50%;
-   }
-   .user-details {
-       display: flex;
-       flex-direction: column;
-   }
-   .user-name {
-       font-weight: 600;
-       font-size: 14px;
-       color: var(--text-primary);
-   }
-   .user-role {
-       font-size: 12px;
-       color: var(--text-secondary);
-       background-color: var(--bg-main);
-       padding: 2px 6px;
-       border-radius: 4px;
-       text-transform: uppercase;
-   }
-   
-   .sidebar-nav ul {
-       display: flex;
-       flex-direction: column;
-       gap: 8px;
-   }
-   .sidebar-nav a {
-       display: flex;
-       align-items: center;
-       gap: 12px;
-       padding: 10px 12px;
-       border-radius: var(--border-radius-sm);
-       font-size: 14px;
-       font-weight: 500;
-       color: var(--text-secondary);
-       transition: all 0.2s ease;
-   }
-   .sidebar-nav a i {
-       font-size: 20px;
-   }
-   .sidebar-nav a:hover {
-       background-color: var(--bg-main);
-       color: var(--text-primary);
-   }
-   
-   /* === ĐÃ SỬA === */
-   .sidebar-nav a.active {
-       background-image: var(--accent-gradient); /* <-- Sửa từ background-color */
-       color: var(--text-white);
-   }
-   .sidebar-nav .has-dropdown a {
-       justify-content: space-between;
-   }
-   
-   /* ----- 3. Main Header ----- */
-   .main-header {
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       margin-bottom: 24px;
-   }
+:root {
+  --primary-color: #b1d94e;
+  --tg-primary-color: #199744;
+  --tg-green: #093637;
+  --tg-green-old: #101d2d;
+  --secondary-color: #fcfcfc60;
+  --third-color: #e2dcdc;
+  --text-color: #ffffffe5;
+  --text-button: #0F101E;
+  --dark-bg: #0c0f14;
+  --card-bg: rgba(20, 26, 35, 0.6);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --background-gradient: linear-gradient(
+    0deg, 
+    var(--tg-primary-color) 0%, 
+    var(--tg-green) 47.60%, 
+    transparent 65.23%
+  );
+}
 
-   .breadcrumb ol {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background:
+    url('../img/features_bg.png') center/cover no-repeat,
+    var(--background-gradient),
+    var(--dark-bg);
+    min-height: 100vh; /* Chiều cao tối thiểu bằng 100% chiều cao màn hình thiết bị */
+    width: 100%;
+    background-repeat: no-repeat; /* Không lặp lại gradient */
+    background-attachment: fixed; /* (Tuỳ chọn) Giữ nền cố định khi cuộn trang, tạo cảm giác app xịn hơn */
     margin: 0;
-    font-size: var(--font-size-16);
-    font-weight: var(--font-weight-500);
 }
 
-.breadcrumb li a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.2s ease;
+.container {
+  width: 100%;
+  max-width: 1420px;
+  margin: 0 auto;
 }
 
-.breadcrumb li a:hover {
-    color: var(--text-primary);
+header {
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
 }
 
-.breadcrumb li:not(:last-child)::after {
-    content: '/';
-    margin: 0 10px;
-    color: var(--text-secondary);
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.breadcrumb li[aria-current="page"] {
-    color: var(--text-primary);
-}
-   
-   .header-actions {
-       display: flex;
-       align-items: center;
-       gap: 16px;
-   }
-   .theme-toggle {
-       background: var(--bg-content);
-       border: 1px solid var(--accent-border);
-       border-radius: var(--border-radius-sm);
-       width: 40px;
-       height: 40px;
-       cursor: pointer;
-       font-size: 20px;
-       color: var(--text-secondary);
-       transition: background-color .3s ease, color .3s ease, border-color .3s ease;
-   }
-   .btn {
-       border: none;
-       padding: 10px 16px;
-       border-radius: var(--border-radius-sm);
-       font-weight: 600;
-       cursor: pointer;
-   }
-   
-   /* === ĐÃ SỬA === */
-   .btn-primary {
-       background-image: var(--accent-gradient); /* <-- Sửa từ background-color */
-       color: var(--text-white);
-       transition: filter 0.2s ease; /* <-- Sửa transition */
-   }
-   .btn-primary:hover {
-       filter: brightness(0.9); /* <-- Sửa hiệu ứng hover */
-   }
-   
-   .user-balance {
-       display: flex;
-       align-items: center;
-       background: var(--bg-content);
-       border: 1px solid var(--accent-border);
-       border-radius: var(--border-radius-md);
-       padding: 8px;
-   }
-   .avatar-sm {
-       width: 32px;
-       height: 32px;
-       border-radius: 50%;
-       margin-right: 12px;
-   }
-   .balance-details {
-       display: flex;
-       flex-direction: column;
-       margin-right: 16px;
-   }
-   .balance-label {
-       font-size: 12px;
-       color: var(--text-secondary);
-   }
-   .balance-amount {
-       font-size: 16px;
-       font-weight: 700;
-       color: var(--text-primary);
-   }
-   .top-up-btn {
-       background: var(--bg-main);
-       border: 1px solid var(--accent-border);
-       border-radius: var(--border-radius-sm);
-       padding: 8px 12px;
-       font-size: 12px;
-       font-weight: 600;
-       color: var(--text-primary);
-       cursor: pointer;
-       display: flex;
-       align-items: center;
-       gap: 4px;
-   }
-   
-   /* ----- 6. Footer ----- */
-   .main-footer {
-       margin-top: auto;
-       padding-top: 14px;
-       border-top: 1px solid var(--accent-border);
-       text-align: center;
-       font-size: 14px;
-       color: var(--text-secondary);
-       transition: border-color .3s ease, color .3s ease;
-   }
-
-   /* ----- 7. Floating Action Button (FAB) ----- */
-   
-   /* === ĐÃ SỬA === */
-   .fab {
-       position: fixed;
-       bottom: 30px;
-       right: 30px;
-       width: 56px;
-       height: 56px;
-       background-image: var(--accent-gradient); /* <-- Sửa từ background-color */
-       color: var(--text-white);
-       border: none;
-       border-radius: 50%;
-       font-size: 28px;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       cursor: pointer;
-       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-       transition: all 0.2s ease;
-   }
-   .fab:hover {
-       filter: brightness(0.9); /* <-- Sửa hiệu ứng hover */
-       transform: translateY(-2px);
-   }
-   
-   /* ----- 8. Connect Wallet Popup ----- */
-   .popup-overlay {
-       position: fixed;
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       background-color: rgba(0, 0, 0, 0.5);
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       opacity: 0;
-       visibility: hidden;
-       transition: opacity 0.3s ease, visibility 0.3s ease;
-       z-index: 1000;
-   }
-   
-   .popup-overlay.show {
-       opacity: 1;
-       visibility: visible;
-   }
-   
-   .popup-content {
-       background-color: var(--bg-content);
-       border-radius: var(--border-radius-lg);
-       padding: var(--padding-container);
-       width: 90%;
-       max-width: 400px;
-       transform: scale(0.9);
-       transition: transform 0.3s ease, background-color 0.3s ease;
-   }
-   
-   .popup-overlay.show .popup-content {
-       transform: scale(1);
-   }
-   
-   .popup-header {
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       margin-bottom: 16px;
-       border-bottom: 1px solid var(--accent-border);
-       padding-bottom: 12px;
-   }
-   
-   .popup-header h3 {
-       font-size: 20px;
-       font-weight: 700;
-       color: var(--text-primary);
-   }
-   
-   .close-popup {
-       background: none;
-       border: none;
-       font-size: 24px;
-       color: var(--text-secondary);
-       cursor: pointer;
-   }
-   
-   .popup-body p {
-       font-size: 14px;
-       color: var(--text-secondary);
-       margin-bottom: 20px;
-       text-align: center;
-   }
-   
-   .wallet-list {
-       display: flex;
-       flex-direction: column;
-       gap: 12px;
-   }
-   
-   .wallet-list a {
-       display: flex;
-       align-items: center;
-       padding: 12px;
-       border: 1px solid var(--accent-border);
-       border-radius: var(--border-radius-md);
-       transition: background-color 0.2s ease, border-color 0.2s ease;
-   }
-   
-   /* === ĐÃ SỬA === */
-   .wallet-list a:hover {
-       background-color: var(--bg-main);
-       border-color: var(--accent-solid-green); /* <-- Sửa sang màu solid */
-   }
-   
-   .wallet-list img {
-       width: 40px;
-       height: 40px;
-       border-radius: 50%;
-       margin-right: 16px;
-   }
-   
-   .wallet-list span {
-       font-weight: 600;
-       color: var(--text-primary);
-       flex-grow: 1;
-   }
-   
-   .wallet-list i {
-       font-size: 20px;
-       color: var(--text-secondary);
-   }
-   
-/* =================================================================
-   PHẦN 11: PROFILE PAGE
-   ================================================================= */
-
-.profile-container {
-    display: grid;
-    gap: 24px;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Space between whitepaper button and theme toggle */
 }
 
-.card {
-    background-color: var(--bg-content);
-    border-radius: var(--border-radius-lg);
-    border: 1px solid var(--accent-border);
-    transition: background-color .3s ease, border-color .3s ease;
-    overflow: hidden; /* Ensures child borders don't poke out */
+.theme-toggle-btn {
+  background: transparent;
+  border: 2px solid var(--text-color); /* Added solid border */
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 10px 15px 10px 15px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.card-header, .card-body, .card-footer {
-    padding: 20px 24px;
+.theme-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.card-header {
-    border-bottom: 1px solid var(--accent-border);
-    transition: border-color .3s ease;
+.logo img {
+max-width: 100%;
+width: 100%;
+height: 90px; /* Adjust as needed */
 }
 
-.card-header h4 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 4px;
+main {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  min-height: 80vh;
+  padding: 4rem 0; /* Add some padding */
+  text-align: center; /* Center text within hero-content */
 }
 
-.card-header p {
-    font-size: 14px;
-    color: var(--text-secondary);
+.hero-content {
+  max-width: 75%;
+  margin: 0 auto;
 }
 
-.card-footer {
-    border-top: 1px solid var(--accent-border);
-    text-align: right;
-    background-color: var(--bg-main);
-    transition: border-color .3s ease, background-color .3s ease;
+.hero-section h1 {
+  font-size: 4rem; /* Adjusted for image */
+  font-weight: 700;
+  color: var(--text-color); /* Default text color */
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-.avatar-section {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
+.hero-section .highlight {
+  background: linear-gradient(120deg, var(--tg-primary-color)  20%, var(--tg-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback for non-webkit */
 }
 
-.profile-avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
+.hero-section p {
+  font-size: 1rem; /* Adjusted from 1.25rem */
+  color: var(--third-color); /* Slightly lighter text for subtitle */
+  max-width: 80%;
+  margin: 0 auto 2.5rem auto; /* Center with margin bottom */
+  line-height: 1.8;
 }
 
-.avatar-actions h3 {
-    font-size: 24px;
-    font-weight: 600;
+.hero-section .cta-buttons {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  gap: 1rem;
 }
-.avatar-actions p {
-    color: var(--text-secondary);
-    margin-bottom: 12px;
+
+
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+
+.btn {
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, var(--tg-primary-color)  20%, var(--primary-color) 100%);
+  color: var(--dark-bg);
+  border: 2px solid linear-gradient(120deg, var(--tg-primary-color)  20%, var(--primary-color) 100%);
+  box-shadow: 0 0 15px var(--tg-green);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(144, 247, 120, 0.8);
 }
 
 .btn-secondary {
-    background-color: var(--bg-main);
-    border: 1px solid var(--accent-border);
-    color: var(--text-primary);
-    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 2px solid var(--secondary-color);
 }
+
 .btn-secondary:hover {
-    background-color: #f3f4f6; /* Lighten */
-}
-body.dark-theme .btn-secondary:hover {
-    background-color: #374151; /* Darken */
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
+  background-color: linear-gradient(90deg, var(--tg-primary-color) 0%, var(--primary-color) 100%);
+  color: var(--text-color);
+  border: 2px solid linear-gradient(90deg, var(--tg-primary-color) 0%, var(--primary-color) 100%);
+  box-shadow: 0 0 15px rgba(144, 247, 120, 0.5);
 }
 
-.form-group-full {
-    grid-column: 1 / -1;
+.btn-secondary:hover {
+  background-color: linear-gradient(90deg, var(--tg-primary-color) 0%, var(--primary-color) 100%);
+  color: var(--text-color);
+  border: 2px solid linear-gradient(90deg, var(--tg-primary-color) 0%, var(--primary-color) 100%);
+  box-shadow: 0 0 15px rgba(144, 247, 120, 0.5);
 }
 
-.form-group label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 8px;
-    font-size: 14px;
-}
-
-.form-control {
-    width: 100%;
-    padding: 10px 14px;
-    border-radius: var(--border-radius-sm);
-    border: 1px solid var(--accent-border);
-    background-color: var(--bg-content);
-    color: var(--text-primary);
-    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: var(--accent-solid-green);
-}
-
-.form-control[readonly] {
-    background-color: var(--bg-main);
-    cursor: not-allowed;
-}
-
-.input-with-button {
-    display: flex;
-    gap: 8px;
-}
-
-.input-with-button .form-control {
-    flex-grow: 1;
-}
-
-.btn-icon {
-    flex-shrink: 0;
-    width: 42px;
-    height: 42px;
-    border-radius: var(--border-radius-sm);
-    border: 1px solid var(--accent-border);
-    background-color: var(--bg-content);
-    color: var(--text-secondary);
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
-}
-.btn-icon:hover {
-    background-color: var(--bg-main);
-    color: var(--text-primary);
-}
-
-/* =================================================================
-   PHẦN 12: DASHBOARD GRID
-   ================================================================= */
-
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 24px;
-    align-items: start;
-}
-
-.main-chart-container .card-body {
-    min-height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.chart-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    background-color: var(--bg-main);
-    border-radius: var(--border-radius-md);
-    border: 2px dashed var(--accent-border);
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.stat-card .card-header h5 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0;
-}
-
-.stat-card .card-body {
-    padding-top: 0;
-}
-
-.stat-card .card-body p {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0;
-}
-
-
-/* =================================================================
-   PHẦN 10: CHAT INTERFACE
-   ================================================================= */
-
-.chat-container {
-    flex-grow: 1;
-    display: flex; /* Changed from grid */
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.chat-history {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Reduced gap */
-}
-
-.popup-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-top: 24px;
-}
-
-.chat-message {
-    display: flex;
-    gap: 16px;
-    max-width: 85%;
-    align-items: flex-end; /* Align to bottom */
-}
-
-.chat-message .avatar {
-    width: 45px;
-    height: 45px;
-    flex-shrink: 0;
-}
-
-.chat-message .message-content {
-    padding: 12px 16px;
-    border-radius: var(--border-radius-md);
-    background-color: var(--bg-content);
-    transition: background-color .3s ease;
-}
-
-.chat-message.user-message {
-    align-self: flex-end; 
-    flex-direction: row-reverse; /* Reverse order for avatar on the right */
-}
-
-.chat-message.user-message .message-content {
-    background-image: var(--accent-gradient);
-    color: var(--text-white);
-}
-
-.chat-message.bot-message {
-    align-self: flex-start;
-}
-
-/* New styles for Quick Replies */
-.quick-replies-container {
-    align-self: flex-start;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding-left: 61px; /* Align with bot message content (avatar width + gap) */
-    margin-top: 8px;
-    margin-bottom: 10px;
-}
-
-.quick-reply-btn {
-    padding: 8px 16px;
-    border-radius: var(--border-radius-sm);
-    border: 1px solid var(--accent-solid-green);
-    background-color: var(--bg-content);
-    color: var(--accent-solid-green);
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.quick-reply-btn:hover {
-    background-color: var(--accent-solid-green);
-    color: var(--text-white);
-}
-
-/* =================================================================
-   PHẦN 13: ROLE VERIFICATION & RESULTS
-   ================================================================= */
-
-.role-checkbox-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
-  text-align: left;
-}
-
-.role-checkbox-item {
+.wallet-address-btn {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 16px;
-  cursor: pointer;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.9rem;
 }
 
-.role-checkbox-item input[type="checkbox"] {
+.wallet-address-btn .copy-icon {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.wallet-address-btn .copy-icon:hover {
+  color: var(--primary-color);
+}
+
+.stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(90deg, #3e4749 0%, #1f282a 100%);
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(5px);
+}
+
+.stats span {
+  font-weight: 500;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid var(--secondary-color);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--primary-color);
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.copyright p {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.copyright img {
   width: 20px;
   height: 20px;
-  accent-color: var(--accent-solid-green);
+  filter: invert(1);
 }
 
-.analyzing-overlay {
+/* body span {
+  position: absolute;
+  pointer-events: none;
+  filter: blur(4px);
+  transform: translate(-50%, -50%);
+  animation: fadeInOut 1s linear infinite;
+  background: linear-gradient(90deg, #14aa48 0%, #acd777 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 10px #14aa48, 0 0 20px #90f778, 0 0 40px #34b40c,
+    0 0 80px #23f707, 0 0 100px #89f0ad;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+} */
+
+/* Wallet Popup Styles */
+.wallet-popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
+  backdrop-filter: blur(5px);
+  display: none; /* Hidden by default */
   align-items: center;
   justify-content: center;
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
 }
 
-.analyzing-overlay.show {
-  opacity: 1;
-  visibility: visible;
+.wallet-popup {
+  background: #10151d;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: popup-fade-in 0.3s ease-out;
 }
 
-.analyzing-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  color: var(--text-white);
-}
-
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 6px solid rgba(255, 255, 255, 0.3);
-  border-top-color: var(--text-white);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
+@keyframes popup-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-.analyzing-text {
-  font-size: 18px;
-  font-weight: 500;
-  opacity: 0;
-  animation: fadeInOut 4s linear forwards;
-}
-
-#analyzing-text-2 {
-  animation-delay: 4s;
-}
-#analyzing-text-3 {
-  animation-delay: 8s;
-}
-
-@keyframes fadeInOut {
-  0%, 100% { opacity: 0; }
-  25%, 75% { opacity: 1; }
-}
-
-.results-body {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.result-item {
+.popup-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--accent-border);
-}
-.result-item:last-of-type {
-    border-bottom: none;
+  margin-bottom: 0.5rem;
 }
 
-.result-item span {
-  font-size: 16px;
-  color: var(--text-secondary);
+.popup-header h2 {
+  font-size: 1.5rem;
+  color: var(--text-color);
 }
 
-.result-item strong {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--third-color);
+  font-size: 2rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.result-item .score {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--accent-solid-green);
+.close-btn:hover {
+  color: var(--text-color);
 }
 
-/* =================================================================
-   PHẦN 14: PROFILE PAGE - OVERVIEW & HISTORY
-   ================================================================= */
-
-.stats-overview-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+.popup-subheading {
+  color: var(--third-color);
+  margin-bottom: 1.5rem;
 }
 
-.overview-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 20px;
+.wallet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.stat-details {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.wallet-item a {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--dark-bg);
+  background-color: var(--third-color);
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.stat-item {
-    display: flex;
-    flex-direction: column;
+.wallet-item a:hover {
+  background-color: var(--tg-green-old);
+  transform: translateY(-2px);
+  color: var(--text-color);
 }
 
-.stat-item span {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-bottom: 4px;
+.wallet-item img {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+  border-radius: 50%;
 }
 
-.stat-item strong {
-    font-size: 20px;
-    font-weight: 600;
+.wallet-item span {
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
-.chart-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.hidden {
+    display: none;
 }
 
-.donut-chart {
-    max-width: 75%;
+/* Profile Section Styles */
+/* 1. Container bao quanh Profile: Bung full chiều rộng */
+.profile-section {
+  display: flex;
+  gap: 2rem; /* Khoảng cách giữa cột trái và phải */
+  padding: 2rem 0; /* Bỏ padding trái phải vì container đã lo, giữ padding trên dưới */
+  /* Xóa background cũ nếu muốn trong suốt như demo, hoặc giữ lại tùy ý */
+  background-color: transparent; 
+  border: none;
+  max-width: 100%;
+  width: 100%; /* QUAN TRỌNG: Để bung rộng ra 2 bên */
+  margin: 0 auto;
+  align-items: stretch; /* Căn hàng từ trên xuống */
+  text-align: left; /* Reset lại text-align vì thẻ main đang để center */
 }
 
-.chart-bg {
-    fill: none;
-    stroke: var(--accent-border);
-    stroke-width: 3;
+/* 2. Cột trái (Card Profile) */
+.profile-card {
+  flex: 0 0 320px; /* Cố định chiều rộng 320px, không co giãn */
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  height: auto; 
+  backdrop-filter: blur(10px); /* Hiệu ứng mờ nền kính */
 }
 
-.chart-segment {
-    fill: none;
-    stroke: var(--accent-solid-green);
-    stroke-width: 3;
-    stroke-linecap: round;
-    transform-origin: 50% 50%;
-    transform: rotate(-90deg);
+/* Ảnh đại diện tròn */
+.profile-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: none;
+  padding: 5px; 
+  
+  background: linear-gradient(
+    0deg, 
+    var(--tg-primary-color) 0%, 
+    var(--tg-green) 47.60%, 
+    transparent 65.23%
+  );
+  
+  /* Các thuộc tính layout giữ nguyên */
+  flex-shrink: 0;
+  display: flex; /* Để canh giữa ảnh bên trong */
+  justify-content: center;
+  align-items: center;
 }
 
-.supply-overview .chart-segment {
-    stroke: #2563eb; /* A blue color for the other chart */
+/* QUAN TRỌNG: Cần chỉnh lại thẻ img bên trong để nó bo tròn theo padding */
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Bo tròn ảnh để khớp với lòng trong */
+  object-fit: cover;
+  display: block;
+  
+  /* Thêm màu nền cho ảnh để tách biệt với viền gradient (nếu ảnh có chỗ trong suốt) */
+  background-color: #333; 
+  
+  /* Clip nội dung thừa nếu có */
+  overflow: hidden; 
 }
 
-
-.chart-label {
-    font-size: 0.6em;
-    text-anchor: middle;
-    fill: var(--text-primary);
-    font-weight: 600;
+/* Các dòng kẻ giả lập text (Loading lines) */
+.profile-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
 }
 
-.chart-legend {
-    display: flex;
-    gap: 16px;
-    margin-top: 12px;
-    font-size: 12px;
+.detail-line {
+  height: 10px;
+  background-color: rgba(255,255,255,0.1); /* Màu nhạt hơn */
+  border-radius: 6px;
+  width: 100%;
 }
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.legend-item span {
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
-.legend-item.used span, .legend-item.usdm span {
-    background-color: var(--accent-solid-green);
-}
-.supply-overview .legend-item.usdm span {
-     background-color: #2563eb;
-}
-
-.legend-item.remaining span, .legend-item.iusd span {
-    background-color: var(--accent-border);
-}
+/* Tùy chỉnh độ rộng các dòng cho giống demo */
+.detail-line:nth-child(1) { width: 60%; margin: 0 auto; }
+.detail-line:nth-child(2) { width: 80%; margin: 0 auto; }
+.detail-line:nth-child(3) { width: 70%; margin: 0 auto; }
 
 
-/* Transaction History */
-.history-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
+/* 3. Cột phải (Nội dung chính) */
+.profile-content {
+  flex: 1; /* Chiếm hết phần còn lại bên phải */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0; /* Fix lỗi flexbox bị tràn trên một số trình duyệt */
 }
 
-.filter-group {
-    display: flex;
-    gap: 12px;
+/* Hàng 1: 3 ô Stats */
+.profile-stats {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-between;
 }
 
-.filter-select {
-    background-color: var(--bg-main);
-    border: 1px solid var(--accent-border);
-    border-radius: var(--border-radius-sm);
-    padding: 6px 12px;
-    font-size: 14px;
-    color: var(--text-primary);
+.stat-box {
+  flex: 1; /* Chia đều 3 phần */
+  height: 180px; /* Chiều cao cố định */
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
 }
 
-.history-table {
+/* Hàng 2: Description (Ô to ở giữa) */
+.profile-description {
+  height: 350px; /* Cao hơn các ô khác */
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Hàng 3: Actions (Ô dưới cùng) */
+.profile-actions {
+  min-height: 280px; /* Chiều cao tối thiểu */
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  overflow: auto; /* Cho phép cuộn nếu nội dung dài */
+  padding: 0; /* Bỏ padding để table chiếm toàn bộ không gian */
+}
+
+/* --- Table Styles --- */
+.activity-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
+    color: var(--text-color);
 }
 
-.history-table th, .history-table td {
-    padding: 16px;
+.activity-table th,
+.activity-table td {
+    padding: 1rem 1.5rem; /* Match the original padding of the container */
     text-align: left;
-    border-bottom: 1px solid var(--accent-border);
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
-.history-table thead th {
-    font-weight: 500;
-    color: var(--text-secondary);
+.activity-table thead th {
+    font-weight: 600;
+    color: var(--primary-color);
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 0.8rem;
+    position: sticky; /* Make header sticky when scrolling */
+    top: 0;
+    background-color: var(--card-bg); /* Add background to sticky header */
 }
 
-.history-table tbody tr:last-child td {
-    border-bottom: none;
+.activity-table tbody tr {
+    transition: background-color 0.3s ease;
 }
 
-.history-table tbody tr:hover {
-    background-color: var(--bg-main);
+.activity-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-.type-swap, .type-borrow, .type-supply, .type-repay {
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-weight: 500;
-    font-size: 12px;
+.activity-table td {
+    font-size: 0.9rem;
 }
 
-.type-swap { background-color: #eff6ff; color: #3b82f6; }
-.type-borrow { background-color: #fef2f2; color: #ef4444; }
-.type-supply { background-color: #f0fdf4; color: #22c55e; }
-.type-repay { background-color: #fffbeb; color: #f59e0b; }
-
+/* Status styles */
 .status-completed {
-    color: var(--text-green);
+    color: #4CAF50; /* Green */
     font-weight: 500;
 }
 
-.tx-link {
-    font-size: 20px;
-    color: var(--text-secondary);
-}
-.tx-link:hover {
-    color: var(--text-primary);
-}
-
-/* =================================================================
-   PHẦN 15: DEPOSIT (MARKET) PAGE
-   ================================================================= */
-
-.market-container {
-    display: grid;
-    gap: 24px;
-}
-
-.market-stats-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 24px;
-}
-
-.market-stat-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.market-stat-item span {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
-}
-
-.market-stat-item strong {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.market-stat-item small {
-    font-size: 14px;
-    color: var(--text-secondary);
-}
-
-.market-pool-card {
-    padding: 0; /* Remove padding to allow header/table to span full width */
-}
-
-.pool-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--accent-border);
-}
-
-.pool-title {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.pool-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.pool-title h3 {
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.pool-actions {
-    display: flex;
-    gap: 12px;
-}
-
-.pool-table {
-    display: flex;
-    flex-direction: column;
-}
-
-.pool-table-header, .pool-table-row {
-    display: grid;
-    grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr;
-    gap: 20px;
-    padding: 16px 24px;
-    align-items: center;
-    border-bottom: 1px solid var(--accent-border);
-}
-
-.pool-table-header {
-    font-weight: 500;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    font-size: 12px;
-}
-
-.pool-table-row {
-    font-size: 16px;
+.status-pending {
+    color: #FFC107; /* Amber */
     font-weight: 500;
 }
 
-.pool-table-row:last-child {
-    border-bottom: none;
-}
-
-.pool-table-row:hover {
-    background-color: var(--bg-main);
-}
-
-.asset-cell {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 600;
-}
-
-.asset-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-}
-
-.pool-table-row div > strong {
-    display: block;
-    font-size: 1em;
-}
-.pool-table-row div > small {
-    font-size: 0.8em;
-    color: var(--text-secondary);
-}
-
-.utilization-cell {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.progress-bar {
-    width: 100px;
-    height: 8px;
-    background-color: var(--accent-border);
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: var(--accent-solid-green);
-    border-radius: 4px;
-}
-
-.more-pools-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 16px;
-    border-top: 1px solid var(--accent-border);
-    color: var(--text-secondary);
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.more-pools-btn:hover {
-    background-color: var(--bg-main);
-}
-
-/* =================================================================
-   PHẦN 16: BORROW/LEND POPUPS
-   ================================================================= */
-
-.transaction-modal-content {
-    max-width: 900px; /* Wider for two-column layout */
-    width: 95%;
-    padding: 0; /* Remove padding from popup-content, handled by inner divs */
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* Main content and sidebar */
-    gap: 0;
-    overflow: hidden; /* Ensure rounded corners apply */
-}
-
-.transaction-main-content {
-    padding: var(--padding-container);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.market-details-sidebar {
-    background-color: var(--bg-main); /* Slightly different background for sidebar */
-    border-left: 1px solid var(--accent-border);
-    padding: var(--padding-container);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.market-details-sidebar .sidebar-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    border-bottom: none; /* Remove default border */
-    padding-bottom: 0;
-}
-
-.market-details-sidebar .sidebar-header h3 {
-    font-size: 18px;
-    flex-grow: 1;
-}
-
-.market-details-sidebar .sidebar-header .close-popup {
-    font-size: 20px;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.modal-header h3 {
-    font-size: 22px;
-    font-weight: 700;
-}
-
-.toggle-buttons {
-    display: flex;
-    background-color: var(--bg-main);
-    border-radius: var(--border-radius-sm);
-    padding: 4px;
-    gap: 4px;
-}
-
-.toggle-buttons .btn {
-    padding: 8px 16px;
-    border-radius: var(--border-radius-sm);
-    font-weight: 500;
-    background: transparent;
-    color: var(--text-secondary);
-    transition: all 0.2s ease;
-}
-
-.toggle-buttons .btn.active {
-    background-image: var(--accent-gradient);
-    color: var(--text-white);
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.input-group label {
-    font-size: 14px;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.input-group label i {
-    font-size: 16px;
-}
-
-.input-with-asset {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--accent-border);
-    border-radius: var(--border-radius-sm);
-    background-color: var(--bg-main);
-    padding-right: 10px;
-}
-
-.input-with-asset input {
-    flex-grow: 1;
-    border: none;
-    background: transparent;
-    padding: 10px 14px;
-    color: var(--text-primary);
-}
-
-.input-with-asset input:focus {
-    outline: none;
-}
-
-.input-with-asset .btn-max {
-    background-color: var(--accent-solid-green-dark);
-    color: var(--text-white);
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-right: 8px;
-    cursor: pointer;
-}
-
-.asset-selector {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-}
-
-.asset-selector img {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-}
-
-.asset-selector span {
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.asset-selector i {
-    font-size: 18px;
-    color: var(--text-secondary);
-}
-
-.available-balance, .max-borrow {
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin-top: 4px;
-}
-
-.transaction-details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px 0;
-    border-top: 1px solid var(--accent-border);
-    border-bottom: 1px solid var(--accent-border);
-}
-
-.transaction-details .detail-item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-}
-
-.transaction-details .detail-item span {
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.transaction-details .detail-item strong {
-    color: var(--text-primary);
+.status-failed {
+    color: #F44336; /* Red */
     font-weight: 500;
 }
 
-.view-forecast {
-    font-size: 12px;
-    color: var(--accent-solid-green);
-    text-align: right;
-    margin-top: 5px;
-}
-
-.full-width-btn {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    margin-top: auto; /* Push to bottom */
-}
-
-.market-details-sidebar .sidebar-content {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.market-details-sidebar .sidebar-content h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.market-details-sidebar .sidebar-content .detail-item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-}
-
-.market-details-sidebar .sidebar-content .detail-item span {
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.market-details-sidebar .sidebar-content .detail-item strong {
-    color: var(--text-primary);
-    font-weight: 500;
-}
-
-/* Chart Placeholders */
-.chart-placeholder-small {
-    width: 100%;
-    height: 150px;
-    background-color: #2d3748; /* Darker background for chart area */
-    border-radius: var(--border-radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.chart-placeholder-utilization {
-    width: 100%;
-    height: 100px;
-    background-color: #2d3748;
-    border-radius: var(--border-radius-sm);
-    margin-bottom: 10px;
-}
-
-.chart-placeholder-apy {
-    width: 100%;
-    height: 120px;
-    background-color: #2d3748;
-    border-radius: var(--border-radius-sm);
-}
-
-.custom-select {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid var(--accent-border);
-    border-radius: var(--border-radius-sm);
-    background-color: var(--bg-main);
-    padding: 10px 14px;
-    cursor: pointer;
-}
-
-.custom-select span {
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-.custom-select img {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    margin-right: 8px;
-}
-
-
-
-
-
-
+/* --- RESPONSIVE (Mobile) --- */
+@media (max-width: 992px) {
+  .profile-section {
+      flex-direction: column; /* Xuống dòng trên mobile/tablet */
+  }
   
+  .profile-card {
+      width: 100%; /* Full màn hình khi ở mobile */
+      flex: none;
+      min-height: auto;
+      flex-direction: row; /* Chuyển avatar sang ngang hàng với info trên mobile cho gọn */
+      padding: 1.5rem;
+  }
+  
+  .profile-image {
+      width: 100px;
+      height: 100px;
+  }
+  
+  .profile-details {
+      margin-top: 0;
+      align-items: flex-start;
+  }
+  
+  .detail-line { margin: 0 !important; }
+
+  .profile-stats {
+      flex-wrap: wrap; /* Cho phép các ô stat rớt dòng nếu màn quá bé */
+  }
+  
+  .stat-box {
+      min-width: 150px; /* Đảm bảo không bị bé quá */
+  }
+}
