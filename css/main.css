@@ -11,12 +11,14 @@ Version: 1.0.2
   --primary-color: #b1d94e;
   --tg-primary-color: #199744;
   --tg-green: #093637;
+  --tg-green-light: #19976336;
   --tg-green-old: #101d2d;
   --secondary-color: #fcfcfc60;
   --third-color: #e2dcdc;
   --text-color: #ffffffe5;
   --text-button: #0F101E;
   --dark-bg: #0c0f14;
+  --light-bg: #ffffff;
   --card-bg: rgba(20, 26, 35, 0.6);
   --border-color: rgba(255, 255, 255, 0.1);
   --background-gradient: linear-gradient(
@@ -25,6 +27,8 @@ Version: 1.0.2
     var(--tg-green) 47.60%, 
     transparent 65.23%
   );
+  --url-background: url('../img/features_bg.png');
+
 }
 
 * {
@@ -36,7 +40,7 @@ Version: 1.0.2
 body {
   font-family: "Poppins", sans-serif;
   background:
-    url('../img/features_bg.png') center/cover no-repeat,
+    var(--url-background) center/cover no-repeat,
     var(--background-gradient),
     var(--dark-bg);
     min-height: 100vh; /* Chiều cao tối thiểu bằng 100% chiều cao màn hình thiết bị */
@@ -185,12 +189,7 @@ main {
   border: 2px solid var(--secondary-color);
 }
 
-.btn-secondary:hover {
-  background-color: linear-gradient(90deg, var(--tg-primary-color) 0%, var(--primary-color) 100%);
-  color: var(--text-color);
-  border: 2px solid linear-gradient(90deg, var(--tg-primary-color) 0%, var(--primary-color) 100%);
-  box-shadow: 0 0 15px rgba(144, 247, 120, 0.5);
-}
+  
 
 .btn-secondary:hover {
   background-color: linear-gradient(90deg, var(--tg-primary-color) 0%, var(--primary-color) 100%);
@@ -773,4 +772,129 @@ footer {
   .info-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* --- Light Theme --- */
+body.light-theme {
+  /* Redefine variables for light mode */
+  --secondary-color: #e0e0e0;
+  --third-color: #6c757d;
+  --text-color: #212529;
+  --text-button: #ffffff;
+  --dark-bg: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.288); /* Nền card kính mờ sáng hơn chút */
+  --border-color: rgb(77, 77, 77);
+  
+  --url-background: url('../img/background_black.png');
+  --background-gradient: linear-gradient(
+    0deg, 
+    var(--tg-primary-color) 0%, 
+    var(--tg-green-light) 47.60%, 
+    transparent 65.23%
+  );
+
+}
+
+/* FIX LOGO: Giữ nguyên màu gốc, KHÔNG đảo màu */
+body.light-theme .logo img {
+  content: url('../img/psylogo_black.png');
+}
+
+/* Các phần khác giữ nguyên logic cũ */
+body.light-theme .copyright img {
+  filter: none;
+}
+
+body.light-theme .btn-secondary {
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+body.light-theme .btn-secondary:hover {
+  color: #ffffff;
+}
+
+body.light-theme .theme-toggle-btn {
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+}
+
+body.light-theme .theme-toggle-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .wallet-popup {
+  background: #ffffff;
+  color: var(--text-color);
+}
+
+/* Chỉnh màu text popup trong light mode cho dễ đọc */
+body.light-theme .popup-header h2,
+body.light-theme .popup-subheading {
+    color: var(--text-color); 
+}
+
+body.light-theme .wallet-item a {
+  background-color: #f8f9fa;
+  color: var(--text-color);
+}
+
+body.light-theme .wallet-item a:hover {
+    background-color: #e9ecef;
+}
+
+body.light-theme .close-btn {
+    color: var(--third-color);
+}
+body.light-theme .close-btn:hover {
+    color: #000;
+}
+
+body.light-theme .chat-popup {
+    background: #ffffff; /* Nền chat trắng */
+}
+
+body.light-theme .chat-header h3 {
+    color: #000;
+}
+
+body.light-theme .bot-message {
+    background-color: #e9ecef;
+    color: #000;
+}
+
+body.light-theme .user-message {
+    color: #fff;
+}
+
+body.light-theme .chat-input input {
+    color: #000;
+}
+
+body.light-theme .activity-table {
+    color: var(--text-color);
+}
+
+body.light-theme .activity-table thead th {
+    background-color: #f8f9fa;
+    color: var(--tg-primary-color);
+}
+
+body.light-theme .activity-table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .social-icons a{
+  color: var(--text-button);
+}
+
+body.light-theme .copyright p {
+  color: var(--text-button);
+}
+
+body.light-theme .btn-secondary:hover {
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 15px var(--tg-green-old);
+  
 }
