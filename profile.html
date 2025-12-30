@@ -20,15 +20,19 @@
             <img src="img/psylogo_white.png" alt="PsycheScore Logo" />
           </a>
           <div class="nav-right">
-          
             <button id="theme-toggle" class="theme-toggle-btn">
-              <i class="fa-solid fa-moon"></i> 
+              <i class="fa-solid fa-moon"></i>
             </button>
-          
+
             <a href="#" class="btn btn-secondary wallet-address-btn">
-              <span id="walletAddressDisplay">addr12...fsfsd</span> 
-              <span class="hidden">addr1qyvtj4t5j5e3c7g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5</span>
-              <i class="fa-regular fa-copy copy-icon" id="copyWalletAddress"></i>
+              <span id="walletAddressDisplay">addr12...fsfsd</span>
+              <span class="hidden"
+                >addr1qyvtj4t5j5e3c7g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5g2m5</span
+              >
+              <i
+                class="fa-regular fa-copy copy-icon"
+                id="copyWalletAddress"
+              ></i>
             </a>
             <a href="#" class="btn btn-secondary">
               <i class="fa-solid fa-file-lines"></i>
@@ -39,7 +43,6 @@
               Disconnect
             </a>
           </div>
-         
         </nav>
       </div>
     </header>
@@ -57,74 +60,78 @@
             </div>
           </div>
           <div class="profile-content">
-            <div class="profile-stats">
-                <!-- Ranh điểm -->
-              <div class="stat-box">
-
-              </div>
-
-              <!--  -->
-              <div class="stat-box">
-
-              </div>
-
-              <!--  -->
-              <div class="stat-box">
-
-              </div>
-            </div>
             <div class="profile-description">
-
+                <h2>Blockchain Verification</h2>
+                <h4>Verify your score on the Midnight Network blockchain</h4>
+                <button class="btn btn-primary" id="verifyBtn">
+                    <i class="fa-solid fa-cube"></i> Verify on Blockchain
+                </button>
+                <div class="verification-details">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <h5>Score</h5>
+                            <p>850</p>
+                        </div>
+                        <div class="info-item">
+                            <h5>Transaction Hash</h5>
+                            <p>0x1234...5678</p>
+                        </div>
+                        <div class="info-item">
+                            <h5>Network</h5>
+                            <p>Midnight Devnet</p>
+                        </div>
+                        <div class="info-item">
+                            <h5>Timestamp</h5>
+                            <p>2025-12-18 10:30 UTC</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="profile-actions">
-                <table class="activity-table">
-                    <thead>
-                      <tr>
-                        <th>STT</th>
-                        <th>Wallet Address</th>
-                        <th>Score</th>
-                        <th>Status</th>
-                        <th>Update At</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>addr1qy...vytj4</td>
-                        <td>850</td>
-                        <td><span class="status-completed">Completed</span></td>
-                        <td>2025-12-14</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>addr1qy...vytj4</td>
-                        <td>-50</td>
-                        <td><span class="status-pending">Pending</span></td>
-                        <td>2025-12-13</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>addr1qy...vytj4</td>
-                        <td>300</td>
-                        <td><span class="status-completed">Completed</span></td>
-                        <td>2025-12-12</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>addr1qy...vytj4</td>
-                        <td>-20</td>
-                        <td><span class="status-failed">Failed</span></td>
-                        <td>2025-12-11</td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
+              <table class="activity-table">
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Wallet Address</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                    <th>Update At</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>addr1qy...vytj4</td>
+                    <td>850</td>
+                    <td><span class="status-completed">Completed</span></td>
+                    <td>2025-12-14</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>addr1qy...vytj4</td>
+                    <td>-50</td>
+                    <td><span class="status-pending">Pending</span></td>
+                    <td>2025-12-13</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>addr1qy...vytj4</td>
+                    <td>300</td>
+                    <td><span class="status-completed">Completed</span></td>
+                    <td>2025-12-12</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>addr1qy...vytj4</td>
+                    <td>-20</td>
+                    <td><span class="status-failed">Failed</span></td>
+                    <td>2025-12-11</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
-
-
-        
       </main>
 
       <footer>
@@ -150,28 +157,43 @@
         <ul class="wallet-list">
           <li class="wallet-item">
             <a href="#">
-              <img src="img/lace.png" alt="Metamask">
+              <img src="img/lace.png" alt="Metamask" />
               Lace wallet
             </a>
           </li>
           <li class="wallet-item">
             <a href="#">
-              <img src="img/yoroi.png" alt="Yoroi Wallet">
+              <img src="img/yoroi.png" alt="Yoroi Wallet" />
               Yoroi Wallet
             </a>
           </li>
-        
+
           <li class="wallet-item">
             <a href="#">
-              <img src="img/midnight.png" alt="Midnight">
+              <img src="img/midnight.png" alt="Midnight" />
               Midnight
             </a>
           </li>
         </ul>
       </div>
     </div>
-    
+
+    <div class="chat-popup-overlay" id="chatPopup">
+      <div class="chat-popup">
+          <div class="chat-header">
+              <h3>PsycheScore Verification</h3>
+              <button class="close-chat-btn" id="closeChatBtn">&times;</button>
+          </div>
+          <div class="chat-box" id="chatBox">
+              <!-- Messages will be appended here -->
+          </div>
+          <div class="chat-input">
+              <input type="text" id="userInput" placeholder="Ask something...">
+              <button id="sendMessageBtn"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+      </div>
+    </div>
+
     <script src="js/script.js"></script>
   </body>
 </html>
-

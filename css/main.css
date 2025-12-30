@@ -122,8 +122,11 @@ main {
   background-clip: text;
   color: transparent; /* Fallback for non-webkit */
 }
-
-.hero-section p {
+.hero-section h2 {
+  font-size: 2rem; /* Adjusted from 1.25rem */
+  color: var(--third-color); /* Slightly lighter text for subtitle */
+}
+.hero-section p{
   font-size: 1rem; /* Adjusted from 1.25rem */
   color: var(--third-color); /* Slightly lighter text for subtitle */
   max-width: 80%;
@@ -500,33 +503,64 @@ footer {
   min-width: 0; /* Fix lỗi flexbox bị tràn trên một số trình duyệt */
 }
 
-/* Hàng 1: 3 ô Stats */
-.profile-stats {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: space-between;
-}
-
-.stat-box {
-  flex: 1; /* Chia đều 3 phần */
-  height: 180px; /* Chiều cao cố định */
-  background-color: var(--card-bg);
-  border-radius: 16px;
-  border: 1px solid var(--border-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(10px);
-}
 
 /* Hàng 2: Description (Ô to ở giữa) */
 .profile-description {
-  height: 350px; /* Cao hơn các ô khác */
+  /* height: 500px; */ /* Let height be auto */
   background-color: var(--card-bg);
   border-radius: 16px;
   border: 1px solid var(--border-color);
-  padding: 1.5rem;
+  padding: 2.5rem;
   backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.profile-description h2 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.profile-description h4 {
+    font-size: 1.1rem;
+    color: var(--third-color);
+    font-weight: 400;
+    margin: 0;
+}
+
+.profile-description .btn {
+    margin-top: 1rem;
+}
+
+.verification-details {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+}
+
+.info-item h5 {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.info-item p {
+    font-size: 1rem;
+    color: var(--text-color);
+    word-break: break-all;
+    margin: 0;
 }
 
 /* Hàng 3: Actions (Ô dưới cùng) */
@@ -593,6 +627,123 @@ footer {
     font-weight: 500;
 }
 
+/* --- Chat Popup Styles --- */
+.chat-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.chat-popup {
+  background: var(--dark-bg);
+  width: 90%;
+  max-width: 600px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  max-height: 600px;
+  animation: popup-fade-in 0.3s ease-out;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.chat-header h3 {
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.close-chat-btn {
+  background: none;
+  border: none;
+  color: var(--third-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.chat-box {
+  flex-grow: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-message {
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  max-width: 90%;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.bot-message {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  align-self: flex-start;
+}
+
+.user-message {
+  background-color: var(--tg-primary-color);
+  color: var(--dark-bg);
+  align-self: flex-end;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid var(--border-color);
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-color);
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.chat-input button {
+  background: var(--tg-primary-color);
+  border: none;
+  color: var(--dark-bg);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-input button:hover {
+  background-color: var(--primary-color);
+}
+
 /* --- RESPONSIVE (Mobile) --- */
 @media (max-width: 992px) {
   .profile-section {
@@ -619,11 +770,7 @@ footer {
   
   .detail-line { margin: 0 !important; }
 
-  .profile-stats {
-      flex-wrap: wrap; /* Cho phép các ô stat rớt dòng nếu màn quá bé */
-  }
-  
-  .stat-box {
-      min-width: 150px; /* Đảm bảo không bị bé quá */
+  .info-grid {
+    grid-template-columns: 1fr;
   }
 }
